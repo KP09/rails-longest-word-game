@@ -1,0 +1,15 @@
+<h1>Welcome to the longest word-game!</h1>
+<p>Here is your grid:</p>
+<p>*****************************************************</p>
+<div id="grid">
+  <% @grid.each do |letter| %>
+    <span class="letter"><%= letter %></span>
+  <% end %>
+</div>
+<p>*****************************************************</p>
+<p>What's your best shot?</p>
+<form action="/score" class="form-inline top-margin">
+  <input type="text" name="attempt" id="attempt" class="form-control">
+  <input type="hidden" name="start" value=<%= @start_time %> >
+  <input type="submit" name="" id="" class="btn btn-primary">
+</form>

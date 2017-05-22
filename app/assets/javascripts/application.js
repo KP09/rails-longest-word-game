@@ -10,6 +10,43 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  var grid = new Object();
+
+  // Build Object with frequencies of letters in grid
+  $('#grid span').each(function(i, item){
+    var letter = $(this).text().toLowerCase();
+    if (grid[letter] == null) {
+      grid[letter] = 0;
+      grid[letter] += 1;
+    } else {
+      grid[letter] += 1;
+    }
+  });
+
+  console.log("GRID")
+  console.log(grid);
+  console.log("****************");
+
+  // Build object with frequencies of letters in attempt
+  $(document).on("keyup", function(){
+    var attemptString = $('#attempt').val();
+    var attemptArray = attemptString.split("");
+    var attempt = new Object();
+    attemptArray.forEach(function(letter){
+      if (attempt[letter] == null) {
+      attempt[letter] = 0;
+      attempt[letter] += 1;
+      } else {
+      attempt[letter] += 1;
+      }
+    });
+  });
+});
